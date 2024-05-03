@@ -1,0 +1,72 @@
+.register{
+    /* box-shadow: 0 6px 20px #0003; */
+    margin-top: 74px;
+    margin-bottom: 34px;    /*do this using flex */
+
+}
+
+
+
+.register_left{
+    width: 50%;
+}
+.register_right{
+    width: 50%;
+    text-align: center;
+}
+
+
+
+.registerImg{
+    width: 100%;
+}
+
+
+.form{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+    margin-top: 24px;
+}
+
+.form input{
+    padding: 25px;
+    height: 23px;
+    width: 422px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--secondaryBlueColor);
+   
+}
+
+.form input::placeholder{
+    color: var(--secondaryBlueColor);
+}
+
+.register_btn{
+    border: none;
+    /* padding: 25px; */
+    height: 57px;
+    width: 422px;
+    border-radius: 5px;
+    background-color: var(--secondaryBlueColor);
+    color: var(--textWhite);
+    cursor: pointer;
+}
+
+.accountPara{
+    margin-top: 23px;
+}
+.accountPara a{
+    color: var(--secondaryBlueColor);
+}
+
+.errors{
+    color: red;
+    margin-top: -13px;
+    margin-bottom: -13px;
+    display: flex;
+    justify-content: flex-start;
+}

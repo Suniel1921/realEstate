@@ -1,0 +1,23 @@
+.navbar_container{
+    background-color: var(--secondaryBlueColor);
+    /* padding: 20px; */
+}
+
+.navlinks li{
+    list-style-type: none;
+}
+
+.navlinks li a{
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--textWhite); 
+
+}
+
+
+
+.logoImg{
+    width: 15%;
+    border-radius: 50%;
+
+}
