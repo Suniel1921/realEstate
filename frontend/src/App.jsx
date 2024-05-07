@@ -6,6 +6,9 @@ import About from './components/pages/about/About';
 import Contact from './components/pages/contact/Contact';
 import Register from './components/auth/register/Register';
 import Login from './components/auth/login/Login';
+import toast, { Toaster } from 'react-hot-toast';
+import SingleListing from './components/listing/SingleListing';
+
 
 const App = () => {
   return (
@@ -18,9 +21,11 @@ const App = () => {
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/single/:id' element={<SingleListing/>}/>
         </Route>
       </Routes>
     </Router>
+        <Toaster/>
    
       
     </>

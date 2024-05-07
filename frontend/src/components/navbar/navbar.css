@@ -15,9 +15,23 @@
 }
 
 
-
 .logoImg{
     width: 15%;
     border-radius: 50%;
+
+}
+
+.loggedInuser_container{
+    display: flex;
+    gap: 3rem;
+    color: var(--textWhite);
+    align-items: center;
+    justify-content: center;
+
+}
+
+.logoutButton{
+    font-size: 18px;
+    cursor: pointer;
 
 }
