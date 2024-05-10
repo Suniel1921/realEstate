@@ -1,0 +1,24 @@
+.searchCategoryContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 34px;
+}
+
+.search_container input{
+    padding: 15px 49px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+
+/* -------category componet style start  -------- */
+.dropDown{
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    outline: none;  
+}
+/* -------category componet style end -------- */

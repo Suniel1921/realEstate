@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import "../slider/slider.css";
+import Search from "../search/Search";
+
 
 const Slider = () => {
   const [index, setIndex] = useState(0);
@@ -10,7 +12,7 @@ const Slider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+    }, 50000);
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -29,6 +31,9 @@ const Slider = () => {
             Find your dream home in our listings today. Start your homeownership journey with us now!
             </p>
             {/* <button className="btn contact_btn">Contact Us</button> */}
+
+         {/* ************************search component************************************* */}
+         <div> <Search/></div>
           </div>
         </div>
       ))}

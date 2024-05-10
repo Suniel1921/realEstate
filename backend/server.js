@@ -9,6 +9,8 @@ const authRoute = require ("./router/authRoute");
 const fileUploadRoute = require ("./router/fileUploadRoute");
 const cors = require ("cors");
 const fileUpload = require('express-fileupload');
+const categoryRoute = require ("./router/categoryRoute");
+const categoryPurposeRoute = require ("./router/categoryPurposeRoute");
 
 
 //middleware for file uplaod
@@ -34,6 +36,8 @@ dbConnection()
 //routes
 app.use('/api/v1/auth',authRoute);
 app.use('/api/v1/upload', fileUploadRoute);
+app.use('/api/v1/category', categoryRoute);
+app.use('/api/v1/categoryPurpose', categoryPurposeRoute);
 
 
 app.listen(port, ()=>{

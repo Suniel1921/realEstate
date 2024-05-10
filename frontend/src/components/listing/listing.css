@@ -27,7 +27,7 @@
 }
 
 .listing_card_content h2{
-    margin-bottom: 24px;
+    margin-bottom: 14px;
 }
 
 
@@ -49,4 +49,10 @@
 .icon{
     color: var(--secondaryBlueColor);
     font-size: 23px;
+}
+
+
+.listing_container a{
+    color: black;
+    text-decoration: none;
 }
