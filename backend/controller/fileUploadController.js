@@ -108,6 +108,32 @@ exports.imageUpload = async (req, res) => {
 
 
 
+exports.totalFlat = async (req, res) => {
+    try {
+        const flatCategoryIds = await fileUploadModel.distinct('category', { /* add query condition if necessary */ });
+        const totalFlat = await fileUploadModel.countDocuments({ category: { $in: flatCategoryIds } });
+        return res.status(200).json({ success: true, totalFlat });
+    } catch (error) {
+        console.error("Error while counting flats:", error);
+        return res.status(500).json({ success: false, message: "Error while counting flats" });
+    }
+};
+
+exports.totalLand = async (req, res) => {
+    try {
+        const landCategoryIds = await fileUploadModel.distinct('category', { /* add query condition if necessary */ });
+        const totalLand = await fileUploadModel.countDocuments({ category: { $in: landCategoryIds } });
+        return res.status(200).json({ success: true, totalLand });
+    } catch (error) {
+        console.error("Error while counting land:", error);
+        return res.status(500).json({ success: false, message: "Error while counting land" });
+    }
+};
+
+
+
+
+
 // get all data
 exports.getAllData = async (req, res) => {
     try {
@@ -139,3 +165,59 @@ exports.getSingleData = async (req, res) => {
         return res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
+
+
+
+
+
+exports.updateProperty = async (req, res) => {
+    try {
+        const propertyId = req.params.id;
+        const { heading, price, address, phone, categoryId, categoryPurposeId } = req.body;
+
+        // Find the property by ID
+        const property = await fileUploadModel.findById(propertyId);
+
+        if (!property) {
+            return res.status(404).json({ success: false, message: "Property not found" });
+        }
+
+        // Update property fields
+        if (heading) property.heading = heading;
+        if (price) property.price = price;
+        if (address) property.address = address;
+        if (phone) property.phone = phone;
+        if (categoryId) property.category = categoryId;
+        if (categoryPurposeId) property.categoryPurpose = categoryPurposeId;
+
+        // Save the updated property
+        await property.save();
+
+        return res.status(200).json({ success: true, message: 'Property updated successfully', property });
+    } catch (error) {
+        console.error("Error while updating property:", error);
+        return res.status(500).json({ success: false, message: `Error while updating property: ${error.message}` });
+    }
+};
+
+
+
+//delete property
+
+exports.deleteProperty = async (req, res) => {
+    try {
+        const propertyId = req.params.id;
+        const property = await fileUploadModel.findByIdAndDelete(propertyId);
+
+        if (!property) {
+            return res.status(404).json({ success: false, message: "Property not found" });
+        }
+
+        return res.status(200).json({ success: true, message: 'Property deleted successfully' });
+    } catch (error) {
+        console.error("Error while deleting property:", error);
+        return res.status(500).json({ success: false, message: `Error while deleting property: ${error.message}` });
+    }
+};
+
+

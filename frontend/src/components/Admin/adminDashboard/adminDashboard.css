@@ -1,0 +1,14 @@
+
+.sideMenuContainer{
+    display: flex;
+    gap:3rem;
+    background-color: var(--darkBgColor);
+}
+
+.sidemenu{
+    width: 15%;
+}
+
+.homeChart{
+    width: 80%;
+}

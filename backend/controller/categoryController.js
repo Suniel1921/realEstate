@@ -29,7 +29,7 @@ exports.createCategory = async (req, res)=>{
 
 
 
-//get all category purpose
+//get all category
 exports.getAllCategory = async (req, res) => {
     try {
         const allCategory = await categoryModel.find({});

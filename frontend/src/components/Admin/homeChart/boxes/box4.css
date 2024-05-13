@@ -1,0 +1,16 @@
+.adminUserImg{
+    width: 70%;
+}
+
+
+.user{
+    font-style: italic;
+    margin-bottom: 34px;
+}
+.user span{
+    text-transform: capitalize;
+}
+
+.user h2{
+    margin-bottom: 24px;
+}

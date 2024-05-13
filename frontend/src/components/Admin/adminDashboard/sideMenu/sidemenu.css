@@ -1,0 +1,25 @@
+.sideMenu_container{
+    background-color:var(--darkBlueColor);
+   
+}
+
+
+.sideItems{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100vh;
+    gap: 2rem;
+    padding: 20px;
+}
+
+.sideItems a{
+    text-decoration: none;
+    color: var(--textWhite);
+}
+
+.listItems{
+    display: flex;
+    gap: 12px;
+}
+

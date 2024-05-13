@@ -60,6 +60,20 @@ exports.login = async (req ,res)=>{
 }
 
 
+//total auth user count
+exports.userCount = async (req, res)=>{
+    try {
+        const count = await authModel.countDocuments();
+        return res.status(200).json({success: true, count})
+        
+    } catch (error) {
+        return res.status(500).json({success: false, message: "Error while Counting Users"})
+        
+    }
+}
+
+
+
 
 //protected route controller
 exports.protectedRoute = async (req ,res)=>{

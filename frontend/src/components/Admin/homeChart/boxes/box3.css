@@ -1,0 +1,19 @@
+.userCount{
+    margin-top: 12px;
+    /* color: #3cd188; */
+    color: #3cd188;
+    text-align: center;
+    position: relative;
+    top: 12px;
+
+  
+}
+
+.userCountBg {
+    background: rgba(60, 216, 130, 0.174);
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    
+    
+}

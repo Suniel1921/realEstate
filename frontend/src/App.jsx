@@ -8,6 +8,11 @@ import Register from './components/auth/register/Register';
 import Login from './components/auth/login/Login';
 import toast, { Toaster } from 'react-hot-toast';
 import SingleListing from './components/listing/SingleListing';
+import AdminProtectedRoute from './components/Admin/adminProtectedRoute/AdminProtectedRoute';
+import AdminDashboard from './components/Admin/adminDashboard/AdminDashboard';
+import CreateRoom from './components/Admin/createRoom/CreateRoom';
+import HomeChart from './components/Admin/homeChart/HomeChart';
+import ManageProperty from './components/Admin/createRoom/manageProperty/ManageProperty';
 
 
 const App = () => {
@@ -23,6 +28,17 @@ const App = () => {
         <Route path='/login' element={<Login/>}/>
         <Route path='/single/:id' element={<SingleListing/>}/>
         </Route>
+
+        {/* admin protected route */}
+        <Route path='/dashboard' element={<AdminProtectedRoute/>}>
+          <Route path='admin' element={<AdminDashboard/>}/>
+          <Route path = '/dashboard/admin/createRoom' element={<CreateRoom/>} />
+          <Route path='/dashboard/admin/manageProperty' element={<ManageProperty/>}/>
+          <Route/>
+        </Route>
+
+
+
       </Routes>
     </Router>
         <Toaster/>

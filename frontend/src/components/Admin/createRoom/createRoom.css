@@ -1,0 +1,61 @@
+
+
+ .createRoom_container {
+    color: var(--textWhite);
+}
+
+.create_Room_form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 34px;
+}
+
+.create_Room_form input{
+    padding: 16px;
+    width: 322px;
+    border: 1px solid rgba(128, 128, 128, 0.494);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--textWhite);
+}
+
+
+.create_Room_form .selectCategory{
+    padding: 16px;
+    width: 322px;
+    border: 1px solid rgba(128, 128, 128, 0.494);
+    border-radius: 8px;
+    background: transparent;
+    color: gray;
+
+}
+
+
+
+.createRoom {
+    margin-top: 50px;
+}
+
+.postYourPropertBtn{
+    border-radius: 8px;
+    background-color: var(--secondaryBlueColor);
+    border: none;
+    color: white;
+}
+
+.error {
+    color: red;
+    margin-top: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
