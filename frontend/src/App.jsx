@@ -13,6 +13,7 @@ import AdminDashboard from './components/Admin/adminDashboard/AdminDashboard';
 import CreateRoom from './components/Admin/createRoom/CreateRoom';
 import HomeChart from './components/Admin/homeChart/HomeChart';
 import ManageProperty from './components/Admin/createRoom/manageProperty/ManageProperty';
+import CreateCategory from './components/Admin/createCategory/CreateCategory';
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
           <Route path='admin' element={<AdminDashboard/>}/>
           <Route path = '/dashboard/admin/createRoom' element={<CreateRoom/>} />
           <Route path='/dashboard/admin/manageProperty' element={<ManageProperty/>}/>
+          <Route path='/dashboard/admin/createCategory' element={<CreateCategory/>}/>
           <Route/>
         </Route>
 

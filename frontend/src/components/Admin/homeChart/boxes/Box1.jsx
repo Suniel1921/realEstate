@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
+import { Bar, BarChart, ResponsiveContainer } from 'recharts';
 
 const Box1 = () => {
     const [totalLandCount, setTotalLandCount] = useState([]);
@@ -48,9 +49,6 @@ const Box1 = () => {
 }
 
 export default Box1
-
-
-
 
 
 

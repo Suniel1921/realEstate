@@ -24,6 +24,10 @@ const SideMenu = () => {
                 <FaHome/>
                 <span>Manage Property</span>
             </Link>
+            <Link to={'/dashboard/admin/createCategory'} className='listItems'>
+                <FaHome/>
+                <span>Create Category</span>
+            </Link>
         </div>
 
     </div>

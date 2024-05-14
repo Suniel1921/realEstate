@@ -8,10 +8,12 @@ exports.createCategory = async (req, res)=>{
         if(!categoryName){
             return res.status(400).json({success: false, message: "Category Name is required"});
         }
+       
+
         //check category name is already exit or not in db
         const categoryExit = await categoryModel.findOne({categoryName});
         if(categoryExit){
-            return res.status(200).send({success : false, message : "category Alrady Exit"});
+            return res.status(400).json({success : false, message : "category Alrady Exit"});
 
         }
 
@@ -29,49 +31,102 @@ exports.createCategory = async (req, res)=>{
 
 
 
-//get all category
+// //get all category
+// exports.getAllCategory = async (req, res) => {
+//     try {
+//         const allCategory = await categoryModel.find({});
+//         if (!allCategory || allCategory.length === 0) {
+//             return res.status(404).json({ success: false, message: "No Category Purpose Found" });   
+//         }
+
+//         return res.status(200).json({ success: true, message: "Category purposes found", allCategory });
+        
+//     } catch (error) {
+//         return res.status(500).json({ success: false, message: 'Internal server error' });
+//     }
+// }
+
+
+
+// //update category purpose
+// exports.updateCategory = async (req, res)=>{
+//     try {
+//         const {id} = req.params;
+//         const {categoryName} = req.body;
+//         const updateCategory = await categoryModel.findByIdAndUpdate(id, { categoryName }, { new: true });
+//         return res.status(200).json({success: false, message : "category purpose updated successfully", updateCategory});
+        
+//     } catch (error) {
+//         return res.status(500).json({success: false, message : 'internal server error'});
+        
+//     }
+// }
+
+
+// //delete category purpose 
+// exports.deleteCategory = async (req ,res)=>{
+//     try {
+//         const {id} = req.params;
+//         const deleteCategory = await categoryModel.findByIdAndDelete(id);
+//         return res.status(200).json({success: false, message: "Category Purpose Deleted succssfully"});
+        
+//     } catch (error) {
+//         return res.status(500).json({success: false, message : "internal server error"})
+        
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 exports.getAllCategory = async (req, res) => {
     try {
         const allCategory = await categoryModel.find({});
         if (!allCategory || allCategory.length === 0) {
-            return res.status(404).json({ success: false, message: "No Category Purpose Found" });   
+            return res.status(404).json({ success: false, message: "No Category Found" });   
         }
 
-        return res.status(200).json({ success: true, message: "Category purposes found", allCategory });
-        
+        return res.status(200).json({ success: true, message: "Categories found", allCategory });
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ success: false, message: 'Internal server error' });
     }
 }
 
-
-
-//update category purpose
-exports.updateCategory = async (req, res)=>{
+exports.updateCategory = async (req, res) => {
     try {
-        const {id} = req.params;
-        const {categoryName} = req.body;
-        const updateCategory = await categoryModel.findByIdAndUpdate(id, { categoryName }, { new: true });
-        return res.status(200).json({success: false, message : "category purpose updated successfully", updateCategory});
-        
+        const { id } = req.params;
+        const { categoryName } = req.body;
+        const updatedCategory = await categoryModel.findByIdAndUpdate(id, { categoryName }, { new: true });
+        if (!updatedCategory) {
+            return res.status(404).json({ success: false, message: "Category not found" });
+        }
+        return res.status(200).json({ success: true, message: "Category updated successfully", updatedCategory });
     } catch (error) {
-        return res.status(500).json({success: false, message : 'internal server error'});
-        
+        console.error(error);
+        return res.status(500).json({ success: false, message: "Internal server error" });
     }
 }
 
-
-//delete category purpose 
-exports.deleteCategory = async (req ,res)=>{
+exports.deleteCategory = async (req, res) => {
     try {
-        const {id} = req.params;
-        const deleteCategory = await categoryModel.findByIdAndDelete(id);
-        return res.status(200).json({success: false, message: "Category Purpose Deleted succssfully"});
-        
+        const { id } = req.params;
+        const deletedCategory = await categoryModel.findByIdAndDelete(id);
+        if (!deletedCategory) {
+            return res.status(404).json({ success: false, message: "Category not found" });
+        }
+        return res.status(200).json({ success: true, message: "Category deleted successfully" });
     } catch (error) {
-        return res.status(500).json({success: false, message : "internal server error"})
-        
+        console.error(error);
+        return res.status(500).json({ success: false, message: "Internal server error" });
     }
 }
-
-

@@ -34,6 +34,7 @@ import { SearchProvider } from './context/SearchContext.jsx';
 import { CategoryProvider } from './context/CategoryContext.jsx';
 import { CategoryPurposeProvider } from './context/CategoryPurposeContext.jsx';
 
+
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <CategoryProvider>
