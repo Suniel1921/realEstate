@@ -42,7 +42,7 @@ app.use('/api/v1/categoryPurpose', categoryPurposeRoute);
 
 
 app.get("/",(req, res)=>{
-    res.json("welcome !")
+    res.send("Welcome")
 })
 
 
