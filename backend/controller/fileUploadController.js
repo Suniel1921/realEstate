@@ -60,9 +60,6 @@ exports.imageUpload = async (req, res) => {
         const { heading, price, address, phone, categoryId, categoryPurposeId } = req.body;
         const files = req.files && req.files.images ? req.files.images : null;
 
-        console.log("categoryId:", categoryId);
-        console.log("categoryPurposeId:", categoryPurposeId);
-
         if (!files || !Array.isArray(files)) {
             return res.status(400).json({ success: false, message: "No files uploaded" });
         }
@@ -219,5 +216,12 @@ exports.deleteProperty = async (req, res) => {
         return res.status(500).json({ success: false, message: `Error while deleting property: ${error.message}` });
     }
 };
+
+
+
+
+
+
+
 
 

@@ -159,6 +159,29 @@ const SingleListing = () => {
             {singleData && (
               <div className="single_listing">
                 <div className="main_image_container">
+
+                <div className="single_listing_content">
+                  <h2>{singleData.heading}</h2>
+                  <div className="rupeess location">
+                    <p className="icon">
+                      <GiTakeMyMoney />
+                    </p>
+                    <h4>Rs {singleData.price}</h4>
+                  </div>
+                  <div className="location">
+                    <p className="icon">
+                      <FaLocationDot />
+                    </p>
+                    <h4>{singleData.address}</h4>
+                  </div>
+                  <div className="phone location">
+                    <p className="icon">
+                      <FaPhoneAlt />
+                    </p>
+                    <h4>{singleData.phone}</h4>
+                  </div>
+                </div>
+
                   {/* Display the main image */}
                   <img
                     className="main_image"
@@ -184,27 +207,7 @@ const SingleListing = () => {
                     />
                   ))}
                 </div>
-                <div className="single_listing_content">
-                  <h2>{singleData.heading}</h2>
-                  <div className="rupeess location">
-                    <p className="icon">
-                      <GiTakeMyMoney />
-                    </p>
-                    <h4>Rs {singleData.price}</h4>
-                  </div>
-                  <div className="location">
-                    <p className="icon">
-                      <FaLocationDot />
-                    </p>
-                    <h4>{singleData.address}</h4>
-                  </div>
-                  <div className="phone location">
-                    <p className="icon">
-                      <FaPhoneAlt />
-                    </p>
-                    <h4>{singleData.phone}</h4>
-                  </div>
-                </div>
+               
               </div>
             )}
           </div>
@@ -221,9 +224,4 @@ const SingleListing = () => {
 };
 
 export default SingleListing;
-
-
-
-
-
 

@@ -1,9 +1,17 @@
-.createCategory{
+.createCategoryPurpose{
+    color: var(--textWhite);
+    margin-top: 54px;
+}
+
+
+
+
+.createCategoryPurpose{
     color: var(--textWhite);
     margin-top: 50px;
 }
 
-.categoryForm input{
+.categoryPurposeForm input{
     width: 276px;
     padding: 15px;
     border: none;
@@ -11,7 +19,7 @@
     outline: none;
 }
 
-.categoryPurposeBtn{
+.categoryBtn{
     width: 126px;
     padding: 15px;
     border: none;

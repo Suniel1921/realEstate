@@ -74,6 +74,7 @@ const ManageProperty = () => {
       console.log(response);
       if (response.data.success) {
         setPropertyData(response.data.allData);
+        getAllProperty();
       }
     } catch (error) {
       if (error.response) {
