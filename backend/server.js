@@ -65,7 +65,7 @@ const fileUpload = require('express-fileupload');
 const cloudinary = require('./config/cloudinary');
 
 dotenv.config();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000; // Change this to 8000
 
 const authRoute = require("./router/authRoute");
 const fileUploadRoute = require("./router/fileUploadRoute");
@@ -96,8 +96,8 @@ app.use('/api/v1/upload', fileUploadRoute);
 app.use('/api/v1/category', categoryRoute);
 app.use('/api/v1/categoryPurpose', categoryPurposeRoute);
 
-// Listen on all network interfaces
-app.listen(port, "0.0.0.0", () => {
+// Start the server
+app.listen(port, () => {
     console.log(`Server is running on port no: ${port}`);
 });
 
