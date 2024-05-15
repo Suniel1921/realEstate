@@ -32,6 +32,10 @@ app.use(cors());
 dbConnection()
 
 
+//default route
+app.get("/",(req, res)=>{
+    res.send("Welcome")
+})
 
 //routes
 app.use('/api/v1/auth',authRoute);
@@ -41,9 +45,7 @@ app.use('/api/v1/categoryPurpose', categoryPurposeRoute);
 
 
 
-app.get("/",(req, res)=>{
-    res.send("Welcome")
-})
+
 
 
 app.listen(port, ()=>{
