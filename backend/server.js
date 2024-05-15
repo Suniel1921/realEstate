@@ -40,6 +40,12 @@ app.use('/api/v1/category', categoryRoute);
 app.use('/api/v1/categoryPurpose', categoryPurposeRoute);
 
 
+
+app.get("/",(req, res)=>{
+    res.json("welcome !")
+})
+
+
 app.listen(port, ()=>{
     console.log(`Server is running on port no : ${port}`);
 })
