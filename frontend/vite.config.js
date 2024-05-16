@@ -20,7 +20,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     rollupOptions: {
-      external: /^@ant-design\/icons(\/.*)?$/, // Mark @ant-design/icons as an external dependency
+      external: /^(@ant-design\/icons.*)$/, // Corrected external path
     },
   },
 });
