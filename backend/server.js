@@ -80,15 +80,18 @@ cloudinary.cloudinaryConnect();
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 // app.use(cors({
 //     origin: 'http://77.37.44.89',
 // }));
 
-// Allow requests from 'http://77.37.44.89:4173'
-// app.use(cors({
-//     origin: 'http://77.37.44.89:4173',
-//   }));
+app.use(cors({
+    origin: 'http://77.37.44.89',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+
 
 // Database Connection
 dbConnection();
