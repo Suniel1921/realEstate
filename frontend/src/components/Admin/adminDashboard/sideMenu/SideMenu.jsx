@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome } from 'react-icons/fa'; // Import only the specific icons you need
+// import { FaHome } from 'react-icons/fa'; 
 import '../sideMenu/sidemenu.css';
 
 const SideMenu = () => {
@@ -8,27 +8,27 @@ const SideMenu = () => {
     <div className='sideMenu_container'>
       <div className="sideItems">
         <Link to={'/'} className='listItems'>
-          <FaHome />
+          {/* <FaHome /> */}
           <span>Home</span>
         </Link>
         <Link to={'/dashboard/admin'} className='listItems'>
-          <FaHome />
+          {/* <FaHome /> */}
           <span>Analytics</span>
         </Link>
         <Link to={'/dashboard/admin/createRoom'} className='listItems'>
-          <FaHome />
+          {/* <FaHome /> */}
           <span>Add Property</span>
         </Link>
         <Link to={'/dashboard/admin/manageProperty'} className='listItems'>
-          <FaHome />
+          {/* <FaHome /> */}
           <span>Manage Property</span>
         </Link>
         <Link to={'/dashboard/admin/createCategory'} className='listItems'>
-          <FaHome />
+          {/* <FaHome /> */}
           <span>Create Category</span>
         </Link>
         <Link to={'/dashboard/admin/createCategoryPurpose'} className='listItems'>
-          <FaHome />
+          {/* <FaHome /> */}
           <span>Create Category Purpose</span>
         </Link>
       </div>
