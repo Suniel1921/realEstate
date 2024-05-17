@@ -60,7 +60,6 @@
 
 
 
-
 const express = require('express');
 const app = express();
 const dotenv = require("dotenv");
@@ -86,7 +85,7 @@ cloudinary.cloudinaryConnect();
 // Middlewares
 app.use(express.json());
 
-const allowedOrigins = ['http://77.37.44.89', 'http://77.37.44.89:4173'];
+const allowedOrigins = ['http://77.37.44.89:8000'];
 
 app.use(cors({
     origin: function (origin, callback) {
