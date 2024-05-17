@@ -84,7 +84,7 @@ cloudinary.cloudinaryConnect();
 app.use(express.json());
 
 // Define allowed origins
-const allowedOrigins = ['http://77.37.44.89', 'http://77.37.44.89:8000'];
+const allowedOrigins = ['http://77.37.44.89', 'http://77.37.44.89:3000'];
 
 app.use(cors({
     origin: function (origin, callback) {
