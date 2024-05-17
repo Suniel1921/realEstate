@@ -55,7 +55,6 @@
 
 
 
-
 const express = require('express');
 const app = express();
 const dotenv = require("dotenv");
@@ -65,7 +64,7 @@ const fileUpload = require('express-fileupload');
 const cloudinary = require('./config/cloudinary');
 
 dotenv.config();
-const port = process.env.PORT || 8000; // Change this to 8000
+const port = process.env.PORT || 8000;
 
 const authRoute = require("./router/authRoute");
 const fileUploadRoute = require("./router/fileUploadRoute");
@@ -80,18 +79,21 @@ cloudinary.cloudinaryConnect();
 
 // Middlewares
 app.use(express.json());
-// app.use(cors());
-// app.use(cors({
-//     origin: 'http://77.37.44.89',
-// }));
+
+const allowedOrigins = ['http://77.37.44.89', 'http://77.37.44.89:4173'];
 
 app.use(cors({
-    origin: 'http://77.37.44.89',
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true); // Allow requests with no origin (like mobile apps or curl requests)
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
-
 
 // Database Connection
 dbConnection();
@@ -111,9 +113,3 @@ app.use('/api/v1/categoryPurpose', categoryPurposeRoute);
 app.listen(port, () => {
     console.log(`Server is running on port no: ${port}`);
 });
-
-
-
-
-
-
