@@ -105,7 +105,7 @@ dbConnection();
 
 // Default route
 app.get("/", (req, res) => {
-    res.send("Welcome user");
+    res.send("Welcome to RealEstate");
 });
 
 // Routes
