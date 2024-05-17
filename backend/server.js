@@ -58,19 +58,16 @@
 
 
 
-
-
 const express = require('express');
 const app = express();
 const dotenv = require("dotenv");
-const dbConnection = require('./config/dbConn');
 const cors = require("cors");
 const fileUpload = require('express-fileupload');
-const cloudinary = require('./config/cloudinary');
 
 dotenv.config();
 const port = process.env.PORT || 8000;
 
+// Import routes
 const authRoute = require("./router/authRoute");
 const fileUploadRoute = require("./router/fileUploadRoute");
 const categoryRoute = require("./router/categoryRoute");
@@ -80,12 +77,14 @@ const categoryPurposeRoute = require("./router/categoryPurposeRoute");
 app.use(fileUpload({ useTempFiles: true, tempFileDir: './temp' }));
 
 // Middleware for cloudinary connection
+const cloudinary = require('./config/cloudinary');
 cloudinary.cloudinaryConnect();
 
 // Middlewares
 app.use(express.json());
 
-const allowedOrigins = ['http://77.37.44.89:8000'];
+// Define allowed origins
+const allowedOrigins = ['http://77.37.44.89', 'http://77.37.44.89:8000'];
 
 app.use(cors({
     origin: function (origin, callback) {
@@ -100,7 +99,8 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-// Database Connection
+// Database connection (assuming you have a `dbConn` module for this)
+const dbConnection = require('./config/dbConn');
 dbConnection();
 
 // Default route
