@@ -1,3 +1,4 @@
+const fs = require('fs');
 const categoryModel = require("../model/categoryModel");
 const categoryPurposeModel = require("../model/categoryPurposeModel");
 const fileUploadModel = require("../model/fileUploadModel");
@@ -8,13 +9,23 @@ async function isFileSupported(type) {
     return supportedTypes.includes(type);
 }
 
+
 async function uploadFileToCloudinary(file, folder, quality) {
     const options = { folder, resource_type: 'auto' };
     if (quality) {
         options.quality = quality;
     }
-    return await cloudinary.uploader.upload(file.tempFilePath, options);
+    const result = await cloudinary.uploader.upload(file.tempFilePath, options);
+    // Delete the temporary file after upload
+    fs.unlink(file.tempFilePath, (err) => {
+        if (err) {
+            console.error(`Failed to delete temp file ${file.tempFilePath}:`, err);
+        }
+    });
+    return result;
 }
+
+
 
 // exports.imageUpload = async (req, res) => {
 //     try {
