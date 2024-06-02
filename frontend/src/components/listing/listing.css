@@ -7,9 +7,7 @@
 .listing_container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-   
-   
+    gap: 10px;   
 }
 
 .listing_card{
@@ -56,3 +54,33 @@
     color: black;
     text-decoration: none;
 }
+
+
+
+
+@media screen and (max-width: 950px) {
+    .listing_container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+}
+
+
+
+@media screen and (max-width: 670px) {
+    .listing_container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+
+@media screen and (max-width: 470px) {
+    .listing_container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+}
+
+
+
+

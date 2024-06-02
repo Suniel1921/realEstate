@@ -16,7 +16,7 @@
 
 
 .logoImg{
-    width: 15%;
+    width: 10%;
     border-radius: 50%;
 
 }
@@ -34,4 +34,14 @@
     font-size: 18px;
     cursor: pointer;
 
+}
+
+
+
+@media screen and (max-width: 470px) {
+    .logoImg {
+        width: 20%;
+
+    }
+    
 }

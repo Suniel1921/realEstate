@@ -485,8 +485,8 @@ const Listing = () => {
                                     {/* Render category and categoryPurpose */}
                                     {data.category && data.categoryPurpose && (
                                         <div>
-                                            <h4>Category: {data.category.categoryName}</h4>
-                                            <h4>Category Purpose: {data.categoryPurpose.name}</h4>
+                                            {/* <h4>Category: {data.category.categoryName}</h4> */}
+                                            {/* <h4>Category Purpose: {data.categoryPurpose.name}</h4> */}
                                         </div>
                                     )}
                                 </div>
