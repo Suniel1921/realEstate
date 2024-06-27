@@ -59,7 +59,7 @@ const Login = () => {
     <div className='container'>
         <div className='register global_flex'>
             <div className="register_left">
-                <img className='registerImg' src="/image/login2.png" alt="login image" />
+                <img className='registerImg' src="/image/login2.png" alt="login image" onDragStart={(e)=>e.preventDefault()} />
             </div>
             <div className="register_right">
                 <h2>Welcome Back</h2>

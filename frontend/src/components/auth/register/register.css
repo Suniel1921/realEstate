@@ -1,3 +1,12 @@
+.no_select {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+
 .register{
     /* box-shadow: 0 6px 20px #0003; */
     margin-top: 74px;
@@ -69,4 +78,53 @@
     margin-bottom: -13px;
     display: flex;
     justify-content: flex-start;
+}
+
+
+
+
+
+
+@media screen and (max-width: 970px) {
+    .register_left{
+        width: 100%;
+    }
+    .register_right{
+        width: 100%;
+        text-align: center;
+    }
+    
+    .register{
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    
+}
+
+
+
+
+
+@media screen and (max-width: 470px) {
+    .form input{
+        padding: 25px;
+        height: 23px;
+        width: 322px;    
+       
+    }
+    .register_btn{
+        width: 322px;  
+    }
+    
+}
+
+@media screen and (max-width: 360px) {
+    .form input{
+        width: 222px;    
+       
+    }
+    .register_btn{
+        width: 222px;  
+    }
+    
 }

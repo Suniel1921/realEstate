@@ -11,6 +11,7 @@ const cors = require ("cors");
 const fileUpload = require('express-fileupload');
 const categoryRoute = require ("./router/categoryRoute");
 const categoryPurposeRoute = require ("./router/categoryPurposeRoute");
+const propertyListingCategoryRoute = require ("./router/propertyListingCategoryRoute");
 
 
 //middleware for file uplaod
@@ -42,6 +43,7 @@ app.use('/api/v1/auth',authRoute);
 app.use('/api/v1/upload', fileUploadRoute);
 app.use('/api/v1/category', categoryRoute);
 app.use('/api/v1/categoryPurpose', categoryPurposeRoute);
+app.use('/api/v1/propertyListingCategory', propertyListingCategoryRoute);
 
 
 

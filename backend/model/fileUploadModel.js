@@ -29,6 +29,11 @@ const fileUploadSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CategoryPurposeModel',
         required: true,
+    },
+    propertyListingCategory:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref : 'propertyListingCategoryModel',
+        required: true,
     }
 });
 

@@ -15,6 +15,7 @@ import HomeChart from './components/Admin/homeChart/HomeChart';
 import ManageProperty from './components/Admin/createRoom/manageProperty/ManageProperty';
 import CreateCategory from './components/Admin/createCategory/CreateCategory';
 import CreateCategoryPurpose from './components/Admin/createCategoryPurpose/CreateCategoryPurpose';
+import RegisterProperty from './components/pages/registerProperty/RegisterProperty';
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/single/:id' element={<SingleListing/>}/>
+        <Route path='/register-property' element={<RegisterProperty/>}/>
         </Route>
 
         {/* admin protected route */}

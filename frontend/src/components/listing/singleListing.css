@@ -1,10 +1,30 @@
 /* .single_page_house_img{
     width: 10%;
 } */
+.singleListing_container{
+    margin-top: 23px;
+}
+
+.listContainer{
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr); */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 2rem;
+}
+
+.left_listing{
+    width: 100%;
+}
+.right_listing{
+    width: 30%;
+}
+
 
 
 .main_image{
-    width: 50%;
+    width: 100%;
     height: 400px;
     object-fit: cover;
 
@@ -12,8 +32,8 @@
 
 
 .thumbnail_image{
-    width: 200px;
-    height: 200px;
+    width: 186px;
+    height: 119px;
     padding: 9px;
     object-fit: cover;
     cursor: pointer;
@@ -22,13 +42,12 @@
 
 
 .right_listing img{
-    width: 23%;
-
+    width: 80%;
+    height: 21vh;
 }
 
+.relatedProduct_link li{
+    list-style: none;
+    text-decoration: none;
 
-.singleListing_container{
-    display: flex;
-    justify-self: center;
-    
 }

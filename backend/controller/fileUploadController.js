@@ -2,13 +2,13 @@ const fs = require('fs');
 const categoryModel = require("../model/categoryModel");
 const categoryPurposeModel = require("../model/categoryPurposeModel");
 const fileUploadModel = require("../model/fileUploadModel");
+const propertyListingCategoryModel = require('../model/propertyListingCategoryModel');
 const cloudinary = require("cloudinary").v2;
 
 async function isFileSupported(type) {
     const supportedTypes = ['jpg', 'jpeg', 'png'];
     return supportedTypes.includes(type);
 }
-
 
 async function uploadFileToCloudinary(file, folder, quality) {
     const options = { folder, resource_type: 'auto' };
@@ -25,76 +25,44 @@ async function uploadFileToCloudinary(file, folder, quality) {
     return result;
 }
 
-
-
-// exports.imageUpload = async (req, res) => {
-//     try {
-//         const { heading, price, address, phone } = req.body;
-//         const files = req.files && req.files.images ? req.files.images : null;
-
-//         if (!files || !Array.isArray(files)) {
-//             return res.status(400).json({ success: false, message: "No files uploaded" });
-//         }
-
-//         const fileUploadPromises = files.map(async file => {
-//             const fileType = file.name.split('.').pop().toLowerCase();
-//             if (!(await isFileSupported(fileType))) {
-//                 return res.status(400).json({ success: false, message: 'File format is not supported' });
-//             }
-//             const response = await uploadFileToCloudinary(file, 'userImages', 90);
-//             return response.secure_url;
-//         });
-
-//         const uploadedImages = await Promise.all(fileUploadPromises);
-
-//         const fileData = await fileUploadModel.create({
-//             images: uploadedImages,
-//             heading,
-//             price,
-//             address,
-//             phone
-//         });
-
-//         return res.status(201).json({ success: true, message: 'User created successfully', fileData });
-//     } catch (error) {
-//         console.error("Error while uploading files:", error);
-//         return res.status(500).json({ success: false, message: `Error while uploading files: ${error.message}` });
-//     }
-// };
-
-
-
-
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB in bytes
 
 exports.imageUpload = async (req, res) => {
     try {
-        const { heading, price, address, phone, categoryId, categoryPurposeId } = req.body;
+        const { heading, price, address, phone, categoryId, categoryPurposeId, propertyListingCategoryId } = req.body;
         const files = req.files && req.files.images ? req.files.images : null;
 
         if (!files || !Array.isArray(files)) {
             return res.status(400).json({ success: false, message: "No files uploaded" });
         }
 
-        const fileUploadPromises = files.map(async file => {
+        const fileUploadPromises = files.map(async (file) => {
             const fileType = file.name.split('.').pop().toLowerCase();
-            if (!(await isFileSupported(fileType))) {
-                return res.status(400).json({ success: false, message: 'File format is not supported' });
+            const fileSize = file.size;
+
+            if (fileSize > MAX_FILE_SIZE) {
+                throw new Error(`File size too large. Got ${fileSize}. Maximum is ${MAX_FILE_SIZE}.`);
             }
+
+            if (!(await isFileSupported(fileType))) {
+                throw new Error('File format is not supported');
+            }
+
             const response = await uploadFileToCloudinary(file, 'userImages', 90);
             return response.secure_url;
         });
 
         const uploadedImages = await Promise.all(fileUploadPromises);
 
-        // Find category and category purpose documents
-        const category = await categoryModel.findById(categoryId);
-        const categoryPurpose = await categoryPurposeModel.findById(categoryPurposeId);
+        // Find category, category purpose, and property listing category documents
+        const [category, categoryPurpose, propertyListingCategory] = await Promise.all([
+            categoryModel.findById(categoryId),
+            categoryPurposeModel.findById(categoryPurposeId),
+            propertyListingCategoryModel.findById(propertyListingCategoryId)
+        ]);
 
-        console.log("Category:", category);
-        console.log("Category Purpose:", categoryPurpose);
-
-        if (!category || !categoryPurpose) {
-            return res.status(404).json({ success: false, message: "Category or Category Purpose not found" });
+        if (!category || !categoryPurpose || !propertyListingCategory) {
+            return res.status(404).json({ success: false, message: "Category, Category Purpose, or Property Listing Category not found" });
         }
 
         const fileData = await fileUploadModel.create({
@@ -104,7 +72,8 @@ exports.imageUpload = async (req, res) => {
             address,
             phone,
             category: category._id,
-            categoryPurpose: categoryPurpose._id
+            categoryPurpose: categoryPurpose._id,
+            propertyListingCategory: propertyListingCategory._id
         });
 
         return res.status(201).json({ success: true, message: 'User created successfully', fileData });
@@ -113,6 +82,7 @@ exports.imageUpload = async (req, res) => {
         return res.status(500).json({ success: false, message: `Error while uploading files: ${error.message}` });
     }
 };
+
 
 
 
@@ -177,6 +147,32 @@ exports.getSingleData = async (req, res) => {
 
 
 
+exports.getRelatedProducts = async (req, res) => {
+    try {
+        const { id } = req.params; // Get the ID from the URL path parameters
+        // First, retrieve the single data to get the address
+        const singleData = await fileUploadModel.findOne({ _id: id });
+        if (!singleData) {
+            return res.status(404).json({ success: false, message: "Single data not found" });
+        }
+        const address = singleData.address; // Retrieve the address from the single data
+        // Query the database to find related products based on the address
+        const relatedProducts = await fileUploadModel.find({ address: address }).limit(5); // Limiting to 5 related products for example
+        res.json({ success: true, relatedProducts });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+};
+
+
+
+
+
+
+
+
+
 
 exports.updateProperty = async (req, res) => {
     try {
@@ -227,6 +223,10 @@ exports.deleteProperty = async (req, res) => {
         return res.status(500).json({ success: false, message: `Error while deleting property: ${error.message}` });
     }
 };
+
+
+
+
 
 
 

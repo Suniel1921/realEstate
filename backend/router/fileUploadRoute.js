@@ -11,6 +11,7 @@ router.delete("/deleteProperty/:id", controller.deleteProperty);
 
 router.get("/totalFlat", controller.totalFlat);
 router.get("/totalLand", controller.totalLand);
+router.get("/getRelatedProducts/:id", controller.getRelatedProducts);
 
 
 
