@@ -129,7 +129,7 @@ const Navbar = () => {
             </li> */}
 
             <li>
-              <NavLink to={'/register-property'}>Register Property Free</NavLink>
+              <NavLink to={'/register-property'}>Register Property</NavLink>
             </li>
           </ul>
         )}

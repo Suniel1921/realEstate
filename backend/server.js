@@ -12,6 +12,7 @@ const fileUpload = require('express-fileupload');
 const categoryRoute = require ("./router/categoryRoute");
 const categoryPurposeRoute = require ("./router/categoryPurposeRoute");
 const propertyListingCategoryRoute = require ("./router/propertyListingCategoryRoute");
+const userPropertyRoute = require ("./router/userPropertyRoute");
 
 
 //middleware for file uplaod
@@ -44,6 +45,7 @@ app.use('/api/v1/upload', fileUploadRoute);
 app.use('/api/v1/category', categoryRoute);
 app.use('/api/v1/categoryPurpose', categoryPurposeRoute);
 app.use('/api/v1/propertyListingCategory', propertyListingCategoryRoute);
+app.use('/api/v1/userProperty', userPropertyRoute);
 
 
 
