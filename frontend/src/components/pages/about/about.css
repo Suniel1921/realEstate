@@ -1,0 +1,158 @@
+:root {
+    --margin: 3rem;
+    --padding: 1rem;
+    --max-width: 40rem;
+    --divider-color: #ddd;
+    --text-align: justify;
+  }
+  
+  #aboutContainer {
+    margin: var(--margin) var(--padding) 0 var(--padding);
+  }
+  
+  #upper-part {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: var(--padding);
+  }
+  
+  #image-container {
+    margin-bottom: var(--margin);
+  }
+  
+  #image {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+  }
+  
+  #text-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  #subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  #text-container {
+    margin-top: 1.75rem;
+  }
+  
+  #text {
+    max-width: var(--max-width);
+    text-align: var(--text-align);
+    margin-top: 1rem;
+  }
+  
+  #content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  #content-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: var(--margin);
+    margin-right: var(--padding);
+  }
+  
+  #icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  #icon {
+    height: 4rem;
+  }
+  
+  #content-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2.25rem;
+  }
+  
+  #content-text-container {
+    margin-top: 0.5rem;
+    text-align: var(--text-align);
+  }
+  
+  #content-text {
+    margin-bottom: 1.75rem;
+    margin-top: 1rem;
+  }
+  
+  #divider {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid var(--divider-color);
+  }
+  
+  /* Media Queries */
+  
+  @media (min-width: 768px) {
+    #container {
+      margin: var(--margin) 3rem 0 3rem;
+    }
+  
+    #image-container {
+      margin-right: var(--margin);
+      margin-bottom: 0;
+    }
+  
+    #text-section {
+      margin-right: var(--padding);
+    }
+  
+    #content-item {
+      width: 20rem;
+      padding: 0 2rem;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    #container {
+      margin: var(--margin) 6rem 0 6rem;
+    }
+  
+    #text-container {
+      width: 100%;
+    }
+  
+    #text {
+      max-width: 80rem;
+    }
+  }
+  
+  @media (max-width: 1280px) {
+    #container {
+      margin: var(--margin) var(--padding) 0 var(--padding);
+    }
+  
+    #upper-part {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    #image-container {
+      margin-bottom: 2rem;
+    }
+  
+    #text-section {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
