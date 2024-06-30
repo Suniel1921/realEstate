@@ -1,0 +1,60 @@
+.userRegisterProperty{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.register_property_container {
+    margin: 20px;
+  }
+  
+  .propertyContainer {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .formContainer {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .userRegisterProperty {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .userRegisterProperty input,
+  .userRegisterProperty select,
+  .userRegisterProperty textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .userRegisterProperty button {
+    grid-column: span 2;
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .userRegisterProperty button:hover {
+    background-color: #45a049;
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
