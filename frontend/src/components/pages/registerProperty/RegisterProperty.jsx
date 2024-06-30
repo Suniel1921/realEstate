@@ -113,7 +113,7 @@ const RegisterProperty = () => {
 
             <div className='propertyListing'>
               <div>
-                <select className='selectCategory' name="propertyListingCategoryId" value={formik.values.propertyListingCategoryId} onChange={formik.handleChange} required>
+                <select className='selectCategory' name="propertyListingCategoryId" value={formik.values.propertyListingCategoryId} onChange={formik.handleChange}>
                   <option className='selectText' value="">Select a property listing category</option>
                   {propertyListingCategories.map(propertyCategory => (
                     <option key={propertyCategory._id} value={propertyCategory._id}>
