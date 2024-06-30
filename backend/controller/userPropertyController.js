@@ -2,7 +2,7 @@ const fs = require('fs');
 const cloudinary = require('cloudinary').v2;
 const Property = require('../model/userPropertModel');
 const mongoose = require('mongoose'); // Add mongoose to check for ObjectId validation
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB in bytes
+const MAX_FILE_SIZE = 20 * 1024 * 1024; // 10MB in bytes
 
 async function isFileSupported(type) {
   const supportedTypes = ['jpg', 'jpeg', 'png'];
@@ -109,4 +109,34 @@ exports.singleUserProperty = async (req, res) => {
     res.status(500).json({ success: false, message: 'Internal server error' });
   }
 };
+
+
+
+
+//get related products based on category
+
+exports.getRelatedProducts = async (req, res) => {
+  try {
+    const { id } = req.params; // Get the ID from the URL path parameters
+    const property = await Property.findById(id);
+
+    if (!property) {
+      return res.status(404).json({ success: false, message: "Property not found" });
+    }
+
+    const propertyListingCategory = property.propertyListingCategory; // Retrieve the property listing category from the property
+
+    // Query the database to find related products based on the property listing category
+    const relatedProducts = await Property.find({
+      propertyListingCategory: propertyListingCategory, // Filter by the same property listing category
+      _id: { $ne: id } // Exclude the current property itself
+    }).limit(5); // Limiting to 5 related products for example
+
+    res.json({ success: true, relatedProducts });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
+  }
+};
+
 
