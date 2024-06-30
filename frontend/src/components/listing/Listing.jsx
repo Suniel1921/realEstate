@@ -147,6 +147,7 @@
 
 
 
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../listing/listing.css";
@@ -164,7 +165,6 @@ const Listing = () => {
     const { searchQuery } = useSearchGlobally();
     const { selectedCategory } = useCategory();
     const { selectedCategoryPurpose } = useCategoryPurpose();
-    const [listingData, setListingData] = useState([]);
     const [userProperty, setUserProperty] = useState([]);
     const [propertyListingCategories, setPropertyListingCategories] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -183,21 +183,6 @@ const Listing = () => {
             }
         };
 
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/upload/getAllData`);
-                if (response.data.success) {
-                    setListingData(response.data.allData);
-                } else {
-                    toast.error("Something went wrong");
-                }
-            } catch (error) {
-                toast.error("Something went wrong");
-            } finally {
-                setLoading(false);
-            }
-        };
-
         const getAllUserProperty = async () => {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/userProperty/userProperty`);
@@ -208,11 +193,12 @@ const Listing = () => {
                 }
             } catch (error) {
                 toast.error("Failed to fetch user properties");
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchCategories();
-        fetchData();
         getAllUserProperty();
     }, []);
 
@@ -224,7 +210,6 @@ const Listing = () => {
         );
     };
 
-    const filteredListingData = listingData.filter(filterProperties);
     const filteredUserProperty = userProperty.filter(filterProperties);
 
     if (loading) {
@@ -234,14 +219,13 @@ const Listing = () => {
     return (
         <div className="listing">
             {propertyListingCategories.map((propertyCategory) => {
-                const listingsForCategory = filteredListingData.filter(data => data.propertyListingCategory === propertyCategory._id);
                 const userPropertiesForCategory = filteredUserProperty.filter(data => data.propertyListingCategory === propertyCategory._id);
 
                 return (
                     <div key={propertyCategory._id}>
                         <h3>{propertyCategory.propertyListingName}</h3>
                         <div className="listing_container">
-                            {[...listingsForCategory, ...userPropertiesForCategory].map((data) => (
+                            {userPropertiesForCategory.map((data) => (
                                 <div className="listing_card" key={data._id}>
                                     <Link to={`/single/${data._id}`} className="listing_link">
                                         {data.images.length > 0 && (
@@ -288,3 +272,5 @@ const Listing = () => {
 };
 
 export default Listing;
+
+

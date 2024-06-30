@@ -93,5 +93,20 @@ exports.getAllUserProperty = async (req, res) => {
 };
 
 
+//get single user property
+exports.singleUserProperty = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const singleProperty = await Property.findById(id);
 
+    if (!singleProperty) {
+      return res.status(404).json({ success: false, message: 'No single property found' });
+    }
+
+    return res.status(200).json({ success: true, message: 'Single user property found', singleProperty });
+  } catch (error) {
+    console.error("Error while fetching property:", error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
 
