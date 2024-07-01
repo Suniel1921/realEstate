@@ -253,7 +253,7 @@ const SingleListing = () => {
                 </div>
                 <div className="right_listing">
                     <div className="right_listing_header">
-                        <h3><FaHome /> Property Details</h3> {/* Using FaHome icon for property details */}
+                        <h3><FaHome /> Property Details</h3> 
                     </div>
                     <div className="property_details">
                         <p>Title: {property.title}</p>
@@ -264,7 +264,7 @@ const SingleListing = () => {
                         <p>Property Type: {property.propertyType}</p>
                     </div>
                     <div className="room_details">
-                        <h3><FaBed /> Room Details</h3> {/* Using FaBed icon for room details */}
+                        <h3><FaBed /> Room Details</h3> 
                         <div className="roomDetails">
                             <p>Floors: {property.floors}</p>
                             <p>Living: {property.living}</p>
@@ -274,7 +274,7 @@ const SingleListing = () => {
                         </div>
                     </div>
                     <div className="user_details">
-                        <h3><FaUser /> Room Owner Details</h3> {/* Using FaUser icon for room owner details */}
+                        <h3><FaUser /> Room Owner Details</h3> 
                         <p>Email: {property.email}</p>
                         <p>Phone: {property.phone}</p>
                     </div>
@@ -293,7 +293,6 @@ const SingleListing = () => {
                                     <p>{product.title}</p>
                                     <p>Price: Rs {product.price}</p>
                                     <p>Location: {product.address}</p>
-                                    {/* Add more details if needed */}
                                 </Link>
                             </div>
                         ))
