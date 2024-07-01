@@ -86,10 +86,14 @@ const Listing = () => {
                       <div className="listing_card_content">
                         <div className="price_tag">Rs. {data.price}</div>
                         <h2 className="listingHeading">{data.heading?.slice(0, 20) || data.title.slice(0, 35)}...</h2>
-                        <h3><LuPhoneCall/>{data.phone}</h3>
+                        
                         <div className="location">
-                          {/* <p className="icon"></p> */}
-                          <h3><CiLocationOn/>{data.address}</h3>
+                          <p><LuPhoneCall className="listingIcon"/></p>
+                          <p>{data.phone}</p>
+                        </div>
+                        <div className="location">
+                          <p><CiLocationOn className="listingIcon"/></p>
+                          <p>{data.address}</p>
                         </div>
                         <div className="properties_count">
                           <span>{data.propertyCount} {data.propertyType}</span>

@@ -7,6 +7,16 @@
     color: #004a75;
 }
 
+.location{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+}
+.listingIcon{
+    font-size: 20px;
+}
+
 .listing_container {
     display: grid;
     /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
@@ -61,7 +71,7 @@
     margin: 10px 0;
 }
 
-.listing_card_content h3 {
+.listing_card_content p {
     font-size: 14px;
     color: gray;
     margin: 5px 0;
