@@ -44,7 +44,8 @@ const RegisterProperty = () => {
     beds: Yup.number().required('Number of beds is required').positive('Beds must be positive'),
     images: Yup.array().min(1, 'At least one image is required'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
-    phone: Yup.string().required('Phone number is required'),
+    phone: Yup.string().required('Phone number is required').max(10, 'Phone Number Must be 10 digits').min(10, 'Phone number must be 10 digits'),
+
   });
 
   // Formik form handling
@@ -242,9 +243,9 @@ const RegisterProperty = () => {
             </div>
 
             <div className='personlDetails'>
-              <input type="text" name="email" placeholder="Enter Your Email Address" value={formik.values.email} onChange={formik.handleChange} />
+              <input type="email" name="email" placeholder="Enter Your Email Address" value={formik.values.email} onChange={formik.handleChange} />
               {formik.touched.email && formik.errors.email ? <div className="error">{formik.errors.email}</div> : null}
-              <input type="text" name="phone" placeholder="Enter Your Phone Number" value={formik.values.phone} onChange={formik.handleChange} />
+              <input type="number" name="phone" placeholder="Enter Your Phone Number" value={formik.values.phone} onChange={formik.handleChange} />
               {formik.touched.phone && formik.errors.phone ? <div className="error">{formik.errors.phone}</div> : null}
             </div>
 

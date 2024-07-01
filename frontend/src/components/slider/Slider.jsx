@@ -7,7 +7,7 @@ import Search from "../search/Search";
 
 const Slider = () => {
   const [index, setIndex] = useState(0);
-  const images = ["/image/house.jpg", "/image/house1.jpg", "/image/house2.jpg"];
+  const images = ["/image/house2.jpg"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,7 +33,7 @@ const Slider = () => {
             {/* <button className="btn contact_btn">Contact Us</button> */}
 
          {/* ************************search component************************************* */}
-         <div> <Search/></div>
+         {/* <div> <Search/></div> */}
           </div>
         </div>
       ))}

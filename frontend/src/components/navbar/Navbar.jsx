@@ -68,11 +68,20 @@ import '../navbar/navbar.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthGlobally } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
+import PropertyListingCategory from '../propertyListingCategory/PropertyListingCategory';
 
 const Navbar = () => {
   const [auth, setAuth] = useAuthGlobally();
   const navigate = useNavigate();
   const [fixed, setFixed] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+
+  const handleCategoryChange = (event) => {
+    const categoryId = event.target.value;
+    setSelectedCategory(categoryId);
+    navigate(`/?category=${categoryId}`);
+  };
 
   const handleLogout = () => {
     setAuth({ ...auth, user: null, token: '' });
@@ -131,6 +140,14 @@ const Navbar = () => {
             <li>
               <NavLink to={'/register-property'}>Register Property</NavLink>
             </li>
+
+            <li>
+          <select onChange={handleCategoryChange} value={selectedCategory}>
+            <option value="">All</option>
+            <PropertyListingCategory />
+          </select>
+        </li>
+        
           </ul>
         )}
       </div>
@@ -140,3 +157,10 @@ const Navbar = () => {
 
 export default Navbar;
 
+
+
+
+
+ 
+
+ 

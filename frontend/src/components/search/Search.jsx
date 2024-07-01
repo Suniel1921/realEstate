@@ -27,9 +27,9 @@ const Search = () => {
       </div>
 
       {/* ----------choose type dropdown------------ */}
-      <Cateogry />
-      <CategoryPurpose />
-      <MaxPrice />
+      {/* <Cateogry /> */}
+      {/* <CategoryPurpose /> */}
+      {/* <MaxPrice /> */}
      </div>
     </>
   );

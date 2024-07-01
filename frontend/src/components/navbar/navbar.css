@@ -44,7 +44,7 @@
   
   .loggedInuser_container {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     color: var(--textWhite);
     align-items: center;
     justify-content: center;
