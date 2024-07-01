@@ -41,6 +41,34 @@
     width: 10%;
     border-radius: 50%;
   }
+
+
+  .selectCategory {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 7px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    max-width: 200px;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23cccccc" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+
+}
+
+.selectCategory option {
+    padding: 8px;
+    font-size: 16px;
+}
+
   
   .loggedInuser_container {
     display: flex;

@@ -142,11 +142,12 @@ const Navbar = () => {
             </li>
 
             <li>
-          <select onChange={handleCategoryChange} value={selectedCategory}>
+          <select onChange={handleCategoryChange} value={selectedCategory} className='selectCategory'>
             <option value="">All</option>
             <PropertyListingCategory />
           </select>
-        </li>
+        </li> 
+        {/* style this property category dropdown and make it like its dont look like drop*/}
         
           </ul>
         )}
