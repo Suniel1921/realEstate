@@ -74,12 +74,12 @@ const Navbar = () => {
   const [auth, setAuth] = useAuthGlobally();
   const navigate = useNavigate();
   const [fixed, setFixed] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategorys, setSelectedCategorys] = useState('');
 
 
   const handleCategoryChange = (event) => {
     const categoryId = event.target.value;
-    setSelectedCategory(categoryId);
+    setSelectedCategorys(categoryId);
     navigate(`/?category=${categoryId}`);
   };
 
@@ -142,7 +142,7 @@ const Navbar = () => {
             </li>
 
             <li>
-          <select onChange={handleCategoryChange} value={selectedCategory} className='selectCategory'>
+          <select onChange={handleCategoryChange} value={selectedCategorys} className='selectCategory'>
             <option value="">All</option>
             <PropertyListingCategory />
           </select>

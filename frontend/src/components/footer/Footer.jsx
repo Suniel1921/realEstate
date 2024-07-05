@@ -28,8 +28,8 @@ const Footer = () => {
             <ul className='links'>
               <li><NavLink to={'/about'}>About</NavLink></li> 
               <li><NavLink to={'/test'}>Why Us?</NavLink></li>              
-              <li><NavLink to={'/test'}>page</NavLink></li>
-              <li><NavLink to={'/test'}>page</NavLink></li>
+              {/* <li><NavLink to={'/test'}>page</NavLink></li>
+              <li><NavLink to={'/test'}>page</NavLink></li> */}
             </ul>
             
           </div>

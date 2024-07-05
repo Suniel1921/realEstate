@@ -201,3 +201,12 @@
 .relatedProduct_link:hover .relatedPropertyImg {
     transform: scale(1.1);
 }
+
+
+
+@media screen and (max-width: 950px) {
+    .propertyimgAndDetailsContainer {
+        flex-direction: column;
+    }
+    
+}

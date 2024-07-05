@@ -387,7 +387,7 @@ const CreateRoom = () => {
               </div>
 
               <div className='price'>
-                <input type="number" name="price" placeholder='Enter Price' value={formData.price} onChange={handleChange} />
+                <input type="text" name="price" placeholder='Enter Price' value={formData.price} onChange={handleChange} />
               </div>
 
               <div className='Facilities'>

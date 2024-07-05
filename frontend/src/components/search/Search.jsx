@@ -22,7 +22,7 @@ const Search = () => {
           value={searchQuery}
           type="search"
           name="search"
-          placeholder="Search by Address"
+          placeholder="Search by Address..."
         />
       </div>
 

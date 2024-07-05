@@ -8,8 +8,8 @@
 }
 
 .search_container input{
-    padding: 15px 49px;
-    border: none;
+    padding: 10px 49px;
+    border: 1px solid gray;
     border-radius: 8px;
     outline: none;
 }

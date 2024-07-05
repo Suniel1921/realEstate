@@ -9,7 +9,7 @@ const userPropertySchema = new Schema({
   roadProperty: { type: String, required: true },
   address: { type: String, required: true },
   district: { type: String, required: true },
-  price: { type: Number, required: true },
+  price: { type: String, required: true },
   facilities: [String],
   furnishing: { type: String, required: true },
   facedTowards: { type: String, required: true },

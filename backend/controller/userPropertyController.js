@@ -157,22 +157,21 @@ exports.userRegisterProperty = async (req, res) => {
 
 
 
-
-//get all user property
+// get all data
 exports.getAllUserProperty = async (req, res) => {
-    try {
-        const allProperties = await Property.find();
-        
-        if (allProperties.length === 0) {
-            return res.status(404).json({ success: false, message: 'No properties found' });
-        }
-
-        res.status(200).json({ success: true, message: 'all user property fetched', allProperties });
-    } catch (error) {
-        console.error("Error while fetching properties:", error);
-        res.status(500).json({ success: false, message: 'Internal server error' });
-    }
+  try {
+      const allProperties = await Property.find({});
+      if (allProperties.length === 0) {
+          return res.status(400).json({ success: false, message: "No property found" });
+      }
+      return res.status(200).json({ success: true, message: "All property found", allProperties });
+  } catch (error) {
+      return res.status(500).json({ success: false, message: `Internal Server Error ${error}` });
+  }
 };
+
+
+
 
 
 //get single user property
@@ -191,6 +190,63 @@ exports.singleUserProperty = async (req, res) => {
     res.status(500).json({ success: false, message: 'Internal server error' });
   }
 };
+
+
+
+// Update property
+exports.updateProperty = async (req, res) => {
+  try {
+    const propertyId = req.params.id;
+    const updateData = req.body;
+
+    // Check if the property ID is valid
+    if (!mongoose.Types.ObjectId.isValid(propertyId)) {
+      return res.status(400).json({ success: false, message: 'Invalid property ID' });
+    }
+
+    // Find the property by ID and update it
+    const updatedProperty = await Property.findByIdAndUpdate(propertyId, updateData, { new: true });
+
+    if (!updatedProperty) {
+      return res.status(404).json({ success: false, message: 'Property not found' });
+    }
+
+    return res.status(200).json({ success: true, message: 'Property updated successfully', updatedProperty });
+  } catch (error) {
+    console.error("Error while updating property:", error);
+    return res.status(500).json({ success: false, message: `Error while updating property: ${error.message}` });
+  }
+};
+
+
+
+
+
+
+
+
+//delete property
+
+exports.deleteProperty = async (req, res) => {
+  try {
+      const propertyId = req.params.id;
+      const property = await Property.findByIdAndDelete(propertyId);
+
+      if (!property) {
+          return res.status(404).json({ success: false, message: "Property not found" });
+      }
+
+      return res.status(200).json({ success: true, message: 'Property deleted successfully' });
+  } catch (error) {
+      console.error("Error while deleting property:", error);
+      return res.status(500).json({ success: false, message: `Error while deleting property: ${error.message}` });
+  }
+};
+
+
+
+
+
 
 
 
